@@ -13,7 +13,7 @@ class Profile(models.Model):
     first_name = models.CharField('Имя', max_length=50, blank=True)
     middle_name = models.CharField('Отчество', max_length=50, blank=True)
     bio = models.TextField('Информация о себе', max_length=500, blank=True)
-    birth_date = models.DateField('Дата рождения: YYYY-mm-dd', null=True, blank=True)
+    birth_date = models.DateField('Дата рождения: dd.mm.YYYY', null=True, blank=True)
     avatar = models.ImageField('Аватар', upload_to='users/%Y/%m/%d/', blank=True)
 
     def __str__(self):

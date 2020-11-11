@@ -29,7 +29,7 @@ class RegisterUserFormView(FormView):
         return super(RegisterUserFormView, self).form_valid(form)
 
 
-class ProfileUpdateView(UpdateView, LoginRequiredMixin):
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     """Update Profile view"""
     form_class = ProfileEditForm
     template_name = 'accounts/update.html'
