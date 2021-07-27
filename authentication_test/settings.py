@@ -13,16 +13,19 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import dotenv
 from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+#setup env from .env
+dotenv_file = Path(BASE_DIR, ".env")
+if Path.is_file(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dpxdjk%cauvsa0p&h0y-7#91*8a8o)z-e3(vtl(8z^^)@&rzng'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -95,8 +98,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # GitHub AUTH
-SOCIAL_AUTH_GITHUB_KEY = '927cc51f63b6db4f55d7'
-SOCIAL_AUTH_GITHUB_SECRET = 'c4c616c304eaa17bad4183bf8408fa946b7292f4'
+SOCIAL_AUTH_GITHUB_KEY = os.getenv('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = os.getenv('SOCIAL_AUTH_GITHUB_SECRET')
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
